@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "886463201585",
+    "firebase_url": "https://genetics-potiguar-app.firebaseio.com",
+    "project_id": "genetics-potiguar-app",
+    "storage_bucket": "genetics-potiguar-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886463201585:android:ad7408246b3a0a70",
+        "android_client_info": {
+          "package_name": "com.example.ohara.potiguargenetics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886463201585-4tma9vpl1opu1es0jjipuphd9oiph33t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ohara.potiguargenetics",
+            "certificate_hash": "ace8e1fea2acba51dca9f515f8fbf5bc582ef1db"
+          }
+        },
+        {
+          "client_id": "886463201585-ersgdd57bs33dvd24vuao4g5df9dp198.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPpjshxalorX5QvXffR0UQuRDCH5lpcdE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886463201585-ersgdd57bs33dvd24vuao4g5df9dp198.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
