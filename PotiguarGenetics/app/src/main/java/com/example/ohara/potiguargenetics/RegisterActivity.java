@@ -1,5 +1,6 @@
 package com.example.ohara.potiguargenetics;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Calendar;
 
 public class RegisterActivity extends AppCompatActivity {
     private String name;
@@ -61,14 +64,26 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void openDatePicker (View view) {
-        DateDialog dateDialog = new DateDialog();
-        dateDialog.show(getFragmentManager(), "datePicker");
+        Calendar calendar = Calendar.getInstance();
+        int year  = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day   = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(RegisterActivity.this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                        birth = day + "/" + month + "/" + year;
+                        TextView birthTextView = (TextView) findViewById(R.id.selected_date_text_view);
+                        birthTextView.setText(birth);
+                    }
+                }, year, month, day);
+        datePickerDialog.show();
     }
 
     public void registerUser () {
         name          = ((EditText) findViewById(R.id.name_text)).getText().toString();
         origin_city   = ((EditText) findViewById(R.id.origin_city_text)).getText().toString();
-        birth         = ((TextView) findViewById(R.id.birth_text_view)).getText().toString();
         school_degree = ((EditText) findViewById(R.id.school_degree_text)).getText().toString();
         cell_phone    = ((EditText) findViewById(R.id.cellphone_number)).getText().toString();
         street        = ((EditText) findViewById(R.id.street_text)).getText().toString();
@@ -92,14 +107,12 @@ public class RegisterActivity extends AppCompatActivity {
             FirebaseDatabase db = FirebaseDatabase.getInstance();
             DatabaseReference databaseReference = db.getReference("users");
 
-
             String id = databaseReference.push().getKey();
             User user = new User(id, name, origin_city, birth, genre, school_degree, cell_phone, street, cep, house_number, neighborhood, city, email, psw);
 
             //TODO validation
 
             databaseReference.child(id).setValue(user);
-
 
             mAuth.createUserWithEmailAndPassword(email, psw)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
