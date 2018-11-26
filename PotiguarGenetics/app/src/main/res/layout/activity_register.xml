@@ -43,19 +43,59 @@
             android:hint="Cidade de Origem"
             />
 
-        <EditText
-            android:id="@+id/birth_text"
+        <TextView
+            android:id="@+id/birth_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/origin_city_text"
-            android:hint="Data de Aniversário"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:text="Data de Nascimento"
+            android:padding="10dp"
+            />
+
+
+        <LinearLayout
+            android:id="@+id/linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_below="@+id/birth_text_view">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Data Selecionada: "
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/selected_date_text_view"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="--/--/----"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_select_birth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/linear_layout"
+            android:layout_below="@+id/linear_layout"
+            android:layout_gravity="center"
+            android:onClick="openDatePicker"
+            android:text="Selecionar Data"
             />
 
         <RadioGroup
             android:id="@+id/genre_radio_grp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/birth_text"
+            android:layout_below="@+id/btn_select_birth"
+            android:checkedButton="@+id/radio_btn_F"
             android:padding="10dp">
 
             <TextView
@@ -71,7 +111,6 @@
                 android:id="@+id/radio_btn_F"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:enabled="true"
                 android:text="Feminino"
                 />
 

@@ -5,7 +5,7 @@ public class User {
     private String name;
     private String origin_city;
     private String birth;
-    private char   genre;
+    private String genre;
     private String school_degree;
     private String cell_phone;
     private String street;
@@ -16,10 +16,30 @@ public class User {
     private String email;
     private String psw;
 
-    public User (String id, String name, String origin_city, String birth, char genre, String school_degree,
+    public  User () { }
+
+    public User (String id, String name, String origin_city, String birth, String genre, String school_degree,
                   String cell_phone, String street, String cep, int house_number, String neighborhood,
                   String city, String email, String psw) {
         this.id            = id;
+        this.name          = name;
+        this.origin_city   = origin_city;
+        this.birth         = birth;
+        this.genre         = genre;
+        this.school_degree = school_degree;
+        this.cell_phone    = cell_phone;
+        this.street        = street;
+        this.cep           = cep;
+        this.house_number  = house_number;
+        this.neighborhood  = neighborhood;
+        this.city          = city;
+        this.email         = email;
+        this.psw           = psw;
+    }
+
+    public User (String name, String origin_city, String birth, String genre, String school_degree,
+                 String cell_phone, String street, String cep, int house_number, String neighborhood,
+                 String city, String email, String psw) {
         this.name          = name;
         this.origin_city   = origin_city;
         this.birth         = birth;
@@ -51,7 +71,7 @@ public class User {
         return birth;
     }
 
-    public char getGenre() {
+    public String getGenre() {
         return genre;
     }
 
@@ -103,7 +123,7 @@ public class User {
         this.birth = birth;
     }
 
-    public void setGenre(char genre) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 
@@ -141,5 +161,9 @@ public class User {
 
     public void setPsw(String psw) {
         this.psw = psw;
+    }
+
+    public String toString () {
+        return "Name: " + name + ", email: " + email + ", genre: " + genre + ", birth: " + birth;
     }
 }
